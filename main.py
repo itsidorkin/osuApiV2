@@ -43,11 +43,10 @@ def refresh_tokens(personal_data, token_exists, token_dead):
     tokens = auth(personal_data, token_exists)
     if token_dead:
         return tokens
-    else:
-        personal_data['access'] = tokens['access_token']
-        personal_data['code'] = tokens['refresh_token']
-        write_personal_data(personal_data)
-        return rooms_data(personal_data['access'])
+    personal_data['access'] = tokens['access_token']
+    personal_data['code'] = tokens['refresh_token']
+    write_personal_data(personal_data)
+    return rooms_data(personal_data['access'])
 
 
 def get_started(personal_data, token_dead):
@@ -62,7 +61,7 @@ def get_started(personal_data, token_dead):
     print('Code получен')
     copy('')
     write_personal_data(personal_data)
-    return refresh_tokens(personalData, False, token_dead)
+    return refresh_tokens(personal_data, False, token_dead)
 
 
 with open("personalData.json") as i:
