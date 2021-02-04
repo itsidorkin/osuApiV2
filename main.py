@@ -16,7 +16,7 @@ def auth(personal_data, token_exists):
         'client_id': personal_data['client_id'],
         'client_secret': personal_data['client_secret'],
         'grant_type': grant_type,
-        'redirect_uri': personal_data['redirect_uri'],
+        'redirect_url': personal_data['redirect_url'],
         code: personal_data['code']
     }
     return requests.post('https://osu.ppy.sh/oauth/token', data=params).json()
@@ -43,8 +43,8 @@ def refresh_tokens(personal_data, token_exists):
 
 
 def get_started(personal_data):
-    url = 'https://osu.ppy.sh/oauth/authorize?client_id={}&redirect_uri={}&response_type=code&scope=public'.format(
-        personalData['client_id'], personalData['redirect_uri'])
+    url = 'https://osu.ppy.sh/oauth/authorize?client_id={}&redirect_url={}&response_type=code&scope=public'.format(
+        personalData['client_id'], personalData['redirect_url'])
     webbrowser.open_new_tab(url)
     copy('')
     print('Ожидание code...')
