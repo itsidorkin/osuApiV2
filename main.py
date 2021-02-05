@@ -55,7 +55,7 @@ def get_started(personal_data, token_dead):
     webbrowser.open_new_tab(url)
     copy('')
     print('Ожидание code...')
-    while paste().find('def') == -1 or len(paste()) != 754:  # не уверен может ли меняться длина code
+    while not ('def' in paste()) or len(paste()) != 754:  # не уверен может ли меняться длина code
         sleep(2)
     personal_data['code'] = paste()
     print('Code получен')
